@@ -33,12 +33,15 @@ class Word:
             return False
 
     def play_game(self):
-        print(self.target_word)
         print(
             "Welcome to Word Guess! You have 5 turns to guess the word. Please enter your first guess: "
         )
         while self.attempts <= self.max_attempts:
             guess = input("Enter a four letter word: ")
+
+            if guess not in self.word_list:
+                print("Invalid")
+                continue
 
             self.attempts += 1
 
@@ -51,6 +54,7 @@ class Word:
 
             else:
                 print("Wrong Guess Try Again! ")
+                print(f"You have {self.max_attempts - self.attempts + 1} turns left ")
 
 
 word = Word()
